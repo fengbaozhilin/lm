@@ -1,0 +1,5 @@
+{
+    "require": {
+        "xiaoler/blade": "^5.4"
+    }
+}
