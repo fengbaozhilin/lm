@@ -1,9 +1,6 @@
 <?php
-error_reporting(0);
+define('ROOT',__DIR__);
 function __autoload($className){
-    require './controllers/'.$className.'.class.php';
+    require ROOT.'/controllers/'.$className.'.class.php';
 }
 
-$test = new  login();
-
-var_dump($test);
