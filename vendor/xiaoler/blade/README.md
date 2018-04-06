@@ -33,7 +33,7 @@ use Xiaoler\Blade\Engines\CompilerEngine;
 use Xiaoler\Blade\Filesystem;
 use Xiaoler\Blade\Engines\EngineResolver;
 
-$path = ['/view_path'];         // your view file path, it's an array
+$path = ['/view_path'];         view.class
 $cachePath = '/cache_path';     // compiled file path
 
 $file = new Filesystem;
@@ -52,7 +52,7 @@ $resolver->register('blade', function () use ($compiler) {
 // get an instance of factory
 $factory = new Factory($resolver, new FileViewFinder($file, $path));
 
-// if your view file extension is not php or blade.php, use this to add it
+view.class
 $factory->addExtension('tpl', 'blade');
 
 // render the template file and echo it

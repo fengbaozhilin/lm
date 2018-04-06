@@ -2,7 +2,7 @@
 <html>
 
 <body>
-我是<?= $a ?>
+<?= $a ?>
 </body>
 </html>
 

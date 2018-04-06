@@ -14,7 +14,7 @@ use Xiaoler\Blade\Engines\EngineInterface;
 class View implements ArrayAccess
 {
     /**
-     * The view factory instance.
+     * The view.class factory instance.
      *
      * @var \Xiaoler\Blade\Factory
      */
@@ -28,28 +28,28 @@ class View implements ArrayAccess
     protected $engine;
 
     /**
-     * The name of the view.
+     * The name of the view.class.
      *
      * @var string
      */
     protected $view;
 
     /**
-     * The array of view data.
+     * The array of view.class data.
      *
      * @var array
      */
     protected $data;
 
     /**
-     * The path to the view file.
+     * The path to the view.class file.
      *
      * @var string
      */
     protected $path;
 
     /**
-     * Create a new view instance.
+     * Create a new view.class instance.
      *
      * @param  \Xiaoler\Blade\Factory  $factory
      * @param  \Xiaoler\Blade\Engines\EngineInterface  $engine
@@ -69,7 +69,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Get the string contents of the view.
+     * Get the string contents of the view.class.
      *
      * @param  callable|null  $callback
      * @return string
@@ -83,9 +83,9 @@ class View implements ArrayAccess
 
             $response = isset($callback) ? call_user_func($callback, $this, $contents) : null;
 
-            // Once we have the contents of the view, we will flush the sections if we are
+            // Once we have the contents of the view.class, we will flush the sections if we are
             // done rendering all views so that there is nothing left hanging over when
-            // another view gets rendered in the future by the application developer.
+            // another view.class gets rendered in the future by the application developer.
             $this->factory->flushStateIfDoneRendering();
 
             return ! is_null($response) ? $response : $contents;
@@ -101,7 +101,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Get the contents of the view instance.
+     * Get the contents of the view.class instance.
      *
      * @return string
      */
@@ -114,8 +114,8 @@ class View implements ArrayAccess
 
         $contents = $this->getContents();
 
-        // Once we've finished rendering the view, we'll decrement the render count
-        // so that each sections get flushed out next time a view is created and
+        // Once we've finished rendering the view.class, we'll decrement the render count
+        // so that each sections get flushed out next time a view.class is created and
         // no old sections are staying around in the memory of an environment.
         $this->factory->decrementRender();
 
@@ -123,7 +123,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Get the evaluated contents of the view.
+     * Get the evaluated contents of the view.class.
      *
      * @return string
      */
@@ -133,7 +133,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Get the data bound to the view instance.
+     * Get the data bound to the view.class instance.
      *
      * @return array
      */
@@ -151,7 +151,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Get the sections of the rendered view.
+     * Get the sections of the rendered view.class.
      *
      * @return array
      */
@@ -163,7 +163,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Add a piece of data to the view.
+     * Add a piece of data to the view.class.
      *
      * @param  string|array  $key
      * @param  mixed   $value
@@ -181,7 +181,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Add a view instance to the view data.
+     * Add a view.class instance to the view.class data.
      *
      * @param  string  $key
      * @param  string  $view
@@ -194,7 +194,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Get the name of the view.
+     * Get the name of the view.class.
      *
      * @return string
      */
@@ -204,7 +204,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Get the name of the view.
+     * Get the name of the view.class.
      *
      * @return string
      */
@@ -214,7 +214,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Get the array of view data.
+     * Get the array of view.class data.
      *
      * @return array
      */
@@ -224,7 +224,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Get the path to the view file.
+     * Get the path to the view.class file.
      *
      * @return string
      */
@@ -234,7 +234,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Set the path to the view.
+     * Set the path to the view.class.
      *
      * @param  string  $path
      * @return void
@@ -245,7 +245,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Get the view factory instance.
+     * Get the view.class factory instance.
      *
      * @return \Xiaoler\Blade\Factory
      */
@@ -255,7 +255,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Get the view's rendering engine.
+     * Get the view.class's rendering engine.
      *
      * @return \Xiaoler\Blade\Engines\EngineInterface
      */
@@ -276,7 +276,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Get a piece of bound data to the view.
+     * Get a piece of bound data to the view.class.
      *
      * @param  string  $key
      * @return mixed
@@ -287,7 +287,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Set a piece of data on the view.
+     * Set a piece of data on the view.class.
      *
      * @param  string  $key
      * @param  mixed   $value
@@ -299,7 +299,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Unset a piece of data from the view.
+     * Unset a piece of data from the view.class.
      *
      * @param  string  $key
      * @return void
@@ -310,7 +310,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Get a piece of data from the view.
+     * Get a piece of data from the view.class.
      *
      * @param  string  $key
      * @return mixed
@@ -321,7 +321,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Set a piece of data on the view.
+     * Set a piece of data on the view.class.
      *
      * @param  string  $key
      * @param  mixed   $value
@@ -333,7 +333,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Check if a piece of data is bound to the view.
+     * Check if a piece of data is bound to the view.class.
      *
      * @param  string  $key
      * @return bool
@@ -344,7 +344,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Remove a piece of bound data from the view.
+     * Remove a piece of bound data from the view.class.
      *
      * @param  string  $key
      * @return bool
@@ -355,7 +355,7 @@ class View implements ArrayAccess
     }
 
     /**
-     * Dynamically bind parameters to the view.
+     * Dynamically bind parameters to the view.class.
      *
      * @param  string  $method
      * @param  array   $parameters
@@ -366,14 +366,14 @@ class View implements ArrayAccess
     public function __call($method, $parameters)
     {
         if (! Str::startsWith($method, 'with')) {
-            throw new BadMethodCallException("Method [$method] does not exist on view.");
+            throw new BadMethodCallException("Method [$method] does not exist on view.class.");
         }
 
         return $this->with(Str::snake(substr($method, 4)), $parameters[0]);
     }
 
     /**
-     * Get the string contents of the view.
+     * Get the string contents of the view.class.
      *
      * @return string
      */

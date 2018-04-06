@@ -70,7 +70,7 @@ class Factory
     }
 
     /**
-     * Get the evaluated view contents for the given view.
+     * Get the evaluated view.class contents for the given view.class.
      *
      * @param  string  $path
      * @param  array   $data
@@ -85,7 +85,7 @@ class Factory
     }
 
     /**
-     * Get the evaluated view contents for the given view.
+     * Get the evaluated view.class contents for the given view.class.
      *
      * @param  string  $view
      * @param  array   $data
@@ -98,7 +98,7 @@ class Factory
             $view = $this->normalizeName($view)
         );
 
-        // Next, we will create the view instance and call the view creator for the view
+        // Next, we will create the view.class instance and call the view.class creator for the view.class
         // which can set any data, etc. Then we will return the view instance back to
         // the caller for rendering or performing other view manipulations on this.
         $data = array_merge($mergeData, $this->parseData($data));
@@ -149,7 +149,7 @@ class Factory
         }
 
         // If there is no data in the array, we will render the contents of the empty
-        // view. Alternatively, the "empty view" could be a raw string that begins
+        // view.class. Alternatively, the "empty view.class" could be a raw string that begins
         // with "raw|" for convenience and to let this know that it is a string.
         else {
             $result = Str::startsWith($empty, 'raw|')
