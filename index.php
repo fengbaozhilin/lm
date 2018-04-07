@@ -16,19 +16,12 @@
 
         $m= $_GET['m'];
 
-        if(class_exists($m)){
+        if(class_exists($m) && function_exists($f)){
 
-            $index = new $m();
+                $index = new $m();
 
-            if(function_exists($f))
-            {
                 $index->$f();
 
-            } else{
-                $index = new view();
-
-                $index->error_404();
-            }
 
         }else{
             $index = new view();
@@ -37,7 +30,9 @@
         }
 
   } else{
+
         $index = new view();
 
         $index->index();
+
         }
