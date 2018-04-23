@@ -9,26 +9,34 @@
         </div>
         <div class="indexMain_left_con">
 
+            <?php  foreach ($arrs as $k=>$arr) { ?>
+
+
             <div class="indexCon_msg">
                 <div class="indexCon_msg_pic"><img src="/statics/index/img/cs.png"></div>
                 <div class="indexCon_msg_detail">
                     <a href="">
                         <div class="indexCon_msg_detail_tittle">
                             <span>PHP</span>
-                            <p>Linux常用命令大全(3)</p>
+                            <p><?php echo $arr['name']?></p>
                         </div>
                     </a>
                     <div class="indexCon_msg_detail_other">
                         <ul>
                             <li>花开花落</li>
-                            <li>1天前</li>
-                            <li>21</li>
+                            <li><?php echo $arr['created_at']?></li>
+                            <li><?php echo $arr['hits']?></li>
                             <li>28</li>
                         </ul>
                     </div>
                 </div>
                 <div class="clear"></div>
             </div>
+
+            <?php } ?>
+
+
+
         </div>
         <div class="indexFooter">
             <div class="indexFooter_con">

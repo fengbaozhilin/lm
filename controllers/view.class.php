@@ -45,10 +45,27 @@ class view
 
         $a = '黄智健';
 
-        $articles =  Controller::getInstance()->test();
+        $controller =  Controller::getInstance();
 
-        $this->assign('a', $articles);
-        $this->render('index');
+        $sql = "select articles.user_id,articles.cate_id , articles.name ,articles.content ,articles.hits,articles.created_at ,users.nickname from   articles,users WHERE articles.user_id = users.id";
+
+        $row = array();
+
+        $result = $controller->query($sql);
+
+        $arrs= [];
+
+        while($row = mysqli_fetch_array($result)){
+
+         $arrs[] = $row;
+
+        }
+//
+        print_r($arrs);
+//        $this->assign('arrs', $arrs);
+//
+//        $this->render('index');
+
 
     }
 
