@@ -1,6 +1,8 @@
 <?php
 
-include ('../init.php');
+include('../init.php');
+use controllers\controller;
+include ('controller.class.php');
 class view
 {
 
@@ -22,12 +24,12 @@ class view
     {
         extract($this->variables);
 
-        $controllerLayout = ROOT . '/views/index/' .  $view . '.php';
+        $controllerLayout = ROOT . '/views/index/' . $view . '.php';
 
         //判断视图文件是否存在
         if (is_file($controllerLayout)) {
 
-            include ($controllerLayout);
+            include($controllerLayout);
 
         } else {
 
@@ -38,28 +40,32 @@ class view
 
     }
 
-    public  function  index(){
+    public function index()
+    {
 
-        $a ='黄智健';
-        $this->assign('a',$a);
+        $a = '黄智健';
+
+        $articles =  Controller::getInstance()->test();
+
+        $this->assign('a', $articles);
         $this->render('index');
 
     }
 
-    public function login(){
-        $a ='黄智健牛逼';
-        $this->assign('a',$a);
+    public function login()
+    {
+        $a = '黄智健牛逼';
+        $this->assign('a', $a);
         $this->render('login');
 
     }
 
-    public function error_404(){
+    public function error_404()
+    {
 
         $this->render('404');
 
     }
-
-
 
 
 }

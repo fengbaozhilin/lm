@@ -7,7 +7,7 @@
 
   function __autoload($className)
   {
-    require ROOT . '/controllers/' . $className . '.class.php';
+    include ROOT . '/controllers/' . $className . '.class.php';
   }
 
   if($_GET['f'] && $_GET['m']){          //方法名，通过url获得。在view类下
@@ -16,7 +16,7 @@
 
         $m= $_GET['m'];
 
-        if(class_exists($m) && function_exists($f)){
+        if(class_exists($m) && method_exists($m,$f)){
 
                 $index = new $m();
 
