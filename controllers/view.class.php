@@ -47,24 +47,42 @@ class view
 
         $controller =  Controller::getInstance();
 
-        $sql = "select articles.user_id,articles.cate_id , articles.name ,articles.content ,articles.hits,articles.created_at ,users.nickname from   articles,users WHERE articles.user_id = users.id";
+        $sql = "select articles.user_id,articles.cate_id , articles.name ,articles.content ,articles.hits,articles.created_at ,users.nickname,users.avatar from   articles,users WHERE articles.user_id = users.id";
 
         $row = array();
 
         $result = $controller->query($sql);
 
+
         $arrs= [];
+
 
         while($row = mysqli_fetch_array($result)){
 
          $arrs[] = $row;
 
         }
-//
-        print_r($arrs);
-//        $this->assign('arrs', $arrs);
-//
-//        $this->render('index');
+
+
+        $sql_hits = "select id,name  from  articles ORDER BY hits desc limit 3";
+
+        $row_hits = array();
+
+        $result_hits = $controller->query($sql_hits);
+
+        $arrs_hits= [];
+
+        while($row_hits = mysqli_fetch_array($result_hits)){
+
+            $arrs_hits[] = $row_hits;
+
+        }
+
+        $this->assign('arrs', $arrs);
+
+        $this->assign('hits', $arrs_hits);
+
+        $this->render('index');
 
 
     }
