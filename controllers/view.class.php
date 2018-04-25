@@ -110,6 +110,13 @@ class view
 
     }
 
+    public function register()
+    {
+
+        $this->render('register');
+
+    }
+
     public function error_404()
     {
 

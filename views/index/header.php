@@ -24,8 +24,8 @@
         <div class="ltForm appear">
             <a href=""><img src="/statics/index/img/indexForm_bg.png" alt="" class="headPic2"/></a>
             <ul>
-                <li><a href="">登入</a></li>
-                <li><a href="">注册</a></li>
+                <li><a href="?m=view&f=login">登入</a></li>
+                <li><a href="?m=view&f=register">注册</a></li>
             </ul>
         </div>
         <!-- 未登入结束-->
