@@ -33,7 +33,17 @@ class view
 
         } else {
 
-            echo "<h1>无法找到该页面</h1>";
+            if(is_file($controllerLayout = ROOT . '/views/index/' . $view . '.html')){
+
+                include($controllerLayout);
+
+            }else{
+
+                echo "<h1>无法找到该页面</h1>";
+
+
+            }
+
 
         }
 
@@ -43,11 +53,16 @@ class view
     public function index()
     {
 
-        $a = '黄智健';
 
         $controller =  Controller::getInstance();
 
-        $sql = "select articles.user_id,articles.cate_id , articles.name ,articles.content ,articles.hits,articles.created_at ,users.nickname,users.avatar from   articles,users WHERE articles.user_id = users.id";
+        $sql = "select articles.user_id,articles.cate_id , articles.name ,articles.content ,articles.hits,articles.created_at ,users.nickname,users.avatar from   articles,users WHERE articles.user_id = users.id order BY created_at DESC ";
+
+        if(isset($_GET['filter']) && $_GET['filter']='hits'){
+
+            $sql = "select articles.user_id,articles.cate_id , articles.name ,articles.content ,articles.hits,articles.created_at ,users.nickname,users.avatar from   articles,users WHERE articles.user_id = users.id order BY hits DESC ";
+
+        }
 
         $row = array();
 
@@ -62,6 +77,7 @@ class view
          $arrs[] = $row;
 
         }
+
 
 
         $sql_hits = "select id,name  from  articles ORDER BY hits desc limit 3";
@@ -89,8 +105,7 @@ class view
 
     public function login()
     {
-        $a = '黄智健牛逼';
-        $this->assign('a', $a);
+
         $this->render('login');
 
     }

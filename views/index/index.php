@@ -3,8 +3,9 @@
         <div class="indexMain_left">
             <div class="indexMain_left_btn">
                 <ul>
-                    <li><a href="javascript:" class="on">最新</a></li>
-                    <li><a href="javascript:">热度</a></li>
+                    <li><a href="/" <?php if(!isset($_GET['filter'])) {?> class="on" <?php } ?>>最新</a></li>
+                    <li><a href="/?filter=hits" <?php if(isset($_GET['filter']) && $_GET['filter']='hits') {?> class="on" <?php } ?>>最新</a></li>
+
                 </ul>
             </div>
             <div class="indexMain_left_con">
@@ -80,12 +81,11 @@
                     </div>
                     <div class="indexPublic_con">
                         <ul class="indexLink">
-                            <li><a href="">4399</a></li>
-                            <li><a href="">百度</a></li>
-                            <li><a href="">京东</a></li>
-                            <li><a href="">阿里巴巴</a></li>
-                            <li><a href="">腾讯</a></li>
-                            <li><a href="">恒大</a></li>
+                            <li><a href="http://www.4399.com">4399</a></li>
+                            <li><a href="http://www.baidu.com">百度</a></li>
+                            <li><a href="http://www.taobao.com">淘宝</a></li>
+                            <li><a href="http://www.alibaba.com">阿里巴巴</a></li>
+                            <li><a href="http://www.qq.com">腾讯</a></li>
                         </ul>
                     </div>
                 </div>

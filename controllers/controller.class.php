@@ -7,7 +7,7 @@ class controller
     private $host = 'localhost'; //数据库主机
     private $name = 'root'; //数据库用户名
     private $pwd = ''; //数据库用户名密码
-    private $dBase = 'game'; //数据库名
+    private $dBase = 'dota'; //数据库名
     private $charset = 'utf8'; //数据库编码，GBK,UTF8,gb2312
     private $conn;             //数据库连接标识;
     private $rows;             //查询获取的多行数组
