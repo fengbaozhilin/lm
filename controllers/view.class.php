@@ -1,102 +1,41 @@
 <?php
 
-include('../init.php');
 use controllers\controller;
-include ('controller.class.php');
-class view
+
+include('base.class.php');
+
+class view  extends base
 {
 
-    public $variables = array();
-
-//    public  function __construct()
-//    {
-//       $a = controller::getInstance();
-//       var_dump($a->query('select * from USERS '));
-//    }
-
-    public function assign($name, $value)
-    {
-        $this->variables[$name] = $value;
-    }
-
-
-    public function render($view)
-    {
-        extract($this->variables);
-
-        $controllerLayout = ROOT . '/views/index/' . $view . '.php';
-
-        //判断视图文件是否存在
-        if (is_file($controllerLayout)) {
-
-            include($controllerLayout);
-
-        } else {
-
-            if(is_file($controllerLayout = ROOT . '/views/index/' . $view . '.html')){
-
-                include($controllerLayout);
-
-            }else{
-
-                echo "<h1>无法找到该页面</h1>";
-
-
-            }
-
-
-        }
-
-
-    }
 
     public function index()
     {
 
 
-        $controller =  Controller::getInstance();
+        $controller = Controller::getInstance();
 
-        $sql = "select articles.user_id,articles.cate_id , articles.name ,articles.content ,articles.hits,articles.created_at ,users.nickname,users.avatar from   articles,users WHERE articles.user_id = users.id order BY created_at DESC ";
+        //查询文章信息
 
-        if(isset($_GET['filter']) && $_GET['filter']='hits'){
-
-            $sql = "select articles.user_id,articles.cate_id , articles.name ,articles.content ,articles.hits,articles.created_at ,users.nickname,users.avatar from   articles,users WHERE articles.user_id = users.id order BY hits DESC ";
-
-        }
-
-        $row = array();
-
-        $result = $controller->query($sql);
+        $sql = "select articles.id,  articles.user_id,articles.cate_id , articles.name ,articles.content ,articles.hits,articles.created_at ,users.username,users.avatar,users.id AS user_id  ,categorys.name AS cate_name from   articles,users ,categorys WHERE articles.user_id = users.id AND  articles.cate_id =  categorys.id order BY created_at DESC limit 5";
 
 
-        $arrs= [];
-
-
-        while($row = mysqli_fetch_array($result)){
-
-         $arrs[] = $row;
-
-        }
-
+        $arrs = $controller->getArr($sql);
 
 
         $sql_hits = "select id,name  from  articles ORDER BY hits desc limit 3";
 
-        $row_hits = array();
 
-        $result_hits = $controller->query($sql_hits);
+        $arrs_hits = $controller->getArr($sql_hits);
 
-        $arrs_hits= [];
+        $sql_cate = "select id,name from categorys";
 
-        while($row_hits = mysqli_fetch_array($result_hits)){
-
-            $arrs_hits[] = $row_hits;
-
-        }
+        $arrs_cate = $controller->getArr($sql_cate);
 
         $this->assign('arrs', $arrs);
 
         $this->assign('hits', $arrs_hits);
+
+        $this->assign('cates', $arrs_cate);
 
         $this->render('index');
 
@@ -123,6 +62,171 @@ class view
         $this->render('404');
 
     }
+
+    public function cate()
+    {
+
+        if (isset($_GET['filter'])) {
+
+            $filter = $_GET['filter'];
+
+            $controller = Controller::getInstance();
+
+            //查询文章信息
+
+            $sql = "select articles.id,  articles.user_id,articles.cate_id , articles.name ,articles.content ,articles.hits,articles.created_at ,users.username,users.avatar,users.id AS user_id  ,categorys.name AS cate_name from   articles,users ,categorys WHERE articles.user_id = users.id AND  articles.cate_id =  categorys.id  AND categorys.id = '$filter' order BY created_at DESC ";
+
+
+            $arrs = $controller->getArr($sql);
+
+
+            $sql_hits = "select id,name  from  articles ORDER BY hits desc limit 3";
+
+
+            $arrs_hits = $controller->getArr($sql_hits);
+
+            $sql_cate = "select id,name from categorys";
+
+            $arrs_cate = $controller->getArr($sql_cate);
+
+            $this->assign('arrs', $arrs);
+
+            $this->assign('hits', $arrs_hits);
+
+            $this->assign('cates', $arrs_cate);
+
+            $this->render('cate');
+        }
+        else{
+
+        }
+    }
+
+    public function detail()
+    {
+
+        if (isset($_GET['article_id'])) {
+
+
+            $artilce_id = urldecode($_GET['article_id']);
+
+            $sql = "select   articles.user_id,articles.cate_id , articles.name ,articles.content ,articles.hits,articles.created_at ,users.username,users.id AS user_id  ,categorys.name AS cate_name from   articles,users ,categorys WHERE  articles.id = '$artilce_id' AND articles.user_id = users.id AND  articles.cate_id =  categorys.id limit 1";
+
+            $controller = Controller::getInstance();
+
+            $arrs = $controller->getArr($sql);
+
+            $arr = $arrs[0];
+
+
+            $sql_arr = "select articles.id,  articles.user_id,articles.cate_id , articles.name ,articles.content ,articles.hits,articles.created_at ,users.username,users.avatar,users.id AS user_id  ,categorys.name AS cate_name from   articles,users ,categorys WHERE articles.user_id = users.id AND  articles.cate_id =  categorys.id order BY created_at DESC limit 5";
+
+            $arrs = $controller->getArr($sql_arr);
+
+            $sql_cate = "select id,name from categorys";
+
+            $arrs_cate = $controller->getArr($sql_cate);
+
+
+//计算点击量
+            if(isset($_SERVER['REMOTE_ADDR'])){
+
+
+                    $table = 'articles';
+                    $hits = $arr['hits']+1;
+                    $data=array('hits'=>$hits);
+                    $where = "id = '$artilce_id' ";
+                   $controller->db_update($table,$data,$where);
+
+                }
+
+
+
+            $this->assign('arr', $arr);
+
+            $this->assign('arrs', $arrs);
+
+            $this->assign('cates', $arrs_cate);
+
+            $this->render('detail');
+        } else {
+
+        }
+
+
+    }
+
+
+    public function articlePut()
+    {
+        $controller = Controller::getInstance();
+
+        $sql_cate = "select id,name from categorys";
+
+        $arrs_cate = $controller->getArr($sql_cate);
+
+        $this->assign('cates', $arrs_cate);
+
+        $this->render('articlePut');
+    }
+
+
+
+
+    public function articleAjax()
+    {
+        $controller = Controller::getInstance();
+        if($controller->loginInfo()) {
+$user_id = $_SESSION['user_id'];
+            if (empty($_POST['cate_id']) || empty($_POST['title']) || empty($_POST['a_content'])) {
+                echo json_encode(['code' => 100]);
+            } else {
+
+            $controller->db_insert('articles',['user_id'=>$user_id,'cate_id'=>$_POST['cate_id'],'name'=>$_POST['title'],'content'=>$_POST['a_content'],'created_at'=>date('Y-m-d H:i:s',time())]);
+
+                echo json_encode(['code' => 200]);
+            }
+        }else{
+            echo json_encode(['code' => 300]);
+        }
+    }
+
+
+    //我的文章
+    public function myArticle()
+    {
+
+        $controller = Controller::getInstance();
+
+        if ($controller->loginInfo()) {
+
+            $user_id = $_SESSION['user_id'];
+
+            $sql = "select * from articles where user_id = '$user_id' ";
+
+            $arrs = $controller->getArr($sql);
+
+            $sql_cate = "select id,name from categorys";
+
+            $arrs_cate = $controller->getArr($sql_cate);
+
+            $this->assign('arrs', $arrs);
+
+            $this->assign('cates', $arrs_cate);
+
+            $this->render('my');
+        } else {
+            echo '<script> alert("请先登录");window.location.href="?m=view&f=login" </script>';
+        }
+
+
+    }
+
+
+
+
+
+
 
 
 }

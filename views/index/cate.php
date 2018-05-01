@@ -4,50 +4,6 @@
         <div class="container">
             <div class="row w_main_row">
                 <div class="col-lg-9 col-md-9 w_main_left">
-                    <!--滚动图开始-->
-                    <div class="panel panel-default">
-
-                        <div id="w_carousel" class="carousel slide w_carousel" data-ride="carousel">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators">
-                                <li data-target="#w_carousel" data-slide-to="0" class="active"></li>
-                                <li data-target="#w_carousel" data-slide-to="1"></li>
-                                <li data-target="#w_carousel" data-slide-to="2"></li>
-                            </ol>
-
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner" role="listbox">
-                                <div class="item active">
-                                    <img src="https://img-blog.csdn.net/2018042819025023?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RRQ0ZLeVFEWFltM0Y4ckIw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="...">
-                                    <div class="carousel-caption">
-                                        <h3>“绝杀”中国AI，美国会打英伟达这张牌吗？</h3>
-
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <img src="https://ss.csdn.net/p?http://mmbiz.qpic.cn/mmbiz_jpg/Pn4Sm0RsAuiakJ6aBoAf4Cqtlw9jCnJkVJeG1AeibicOt4TudWLcJGQFNrSOybicPnHfYIEKZoOAtUKvR5PC2zj0dw/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1" alt="...">
-                                    <div class="carousel-caption"><h3>@程序员，与JavaScript 疲劳症SayBye！</h3></div>
-                                </div>
-                                <div class="item">
-                                    <img src="https://ss.csdn.net/p?http://mmbiz.qpic.cn/mmbiz_jpg/1hReHaqafacfexBlic7oWAwps52G0aic89QNmfiaCpDob8Pc5V4P3GkU7TNFmb2oUPIsmAuLPEVhx3k7AKvs1lnsQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1" alt="...">
-                                    <div class="carousel-caption"><h3>Python爬虫爬取智联招聘（进阶版）</h3></div>
-                                </div>
-
-                            </div>
-
-                            <!-- Controls -->
-                            <a class="left carousel-control" href="#w_carousel" role="button" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="right carousel-control" href="#w_carousel" role="button" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-
-                    </div>
-
 
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -64,7 +20,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
 
-                                            <h4><a class="title" href="?m=view&f=detail&article_id=<?= ($arr['id']) ?>"><?= $arr['name'] ?>om</a>
+                                            <h4><a class="title" href="?m=view&f=detail&article_id=<?= ($arr['id']) ?>"><?= $arr['name'] ?></a>
                                             </h4>
                                             <p>
                                                 <a class="label label-default"><?= $arr['cate_name'] ?></a>
@@ -72,11 +28,10 @@
                                             </p>
                                             <p><span class="count"> <img src="/statics/index/img/star-off.png">
                                                 <a href="#"><?= $arr['username'] ?></a></span>
-                                                <span class="count"> <img src="/statics/index/img/star-off.png"></i>阅读:<?= $arr['hits'] ?></span><span
+                                                <span class="count"> <img src="/statics/index/img/star-off.png">阅读:<?= $arr['hits'] ?></span><span
                                                         class="count">
                                                 <span class="count"> <img src="/statics/index/img/star-off.png"><?= $arr['created_at'] ?></span>
                                             </p>
-
 
                                         </div>
                                     </div>
@@ -132,10 +87,10 @@
                         <div class="panel-body">
                             <ul class="list-unstyled sidebar">
                                 <?php foreach ($arrs as $arr) { ?>
-                                <li>
-                                    <a href="?m=view&f=detail&article_id=<?= ($arr['id']) ?>"><?= $arr['name'] ?></a>
-                                </li>
-    <?php } ?>
+                                    <li>
+                                        <a href="?m=view&f=detail&article_id=<?= ($arr['id']) ?>"><?= $arr['name'] ?></a>
+                                    </li>
+                                <?php } ?>
 
 
                             </ul>
