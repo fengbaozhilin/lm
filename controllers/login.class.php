@@ -1,5 +1,4 @@
 <?php
-include('../init.php');
 use controllers\controller;
 include ('controller.class.php');
 class login

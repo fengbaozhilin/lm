@@ -4,7 +4,7 @@ use controllers\controller;
 
 include('base.class.php');
 
-class view  extends base
+class view extends base
 {
 
 
@@ -96,8 +96,7 @@ class view  extends base
             $this->assign('cates', $arrs_cate);
 
             $this->render('cate');
-        }
-        else{
+        } else {
 
         }
     }
@@ -129,17 +128,16 @@ class view  extends base
 
 
 //计算点击量
-            if(isset($_SERVER['REMOTE_ADDR'])){
+            if (isset($_SERVER['REMOTE_ADDR'])) {
 
 
-                    $table = 'articles';
-                    $hits = $arr['hits']+1;
-                    $data=array('hits'=>$hits);
-                    $where = "id = '$artilce_id' ";
-                   $controller->db_update($table,$data,$where);
+                $table = 'articles';
+                $hits = $arr['hits'] + 1;
+                $data = array('hits' => $hits);
+                $where = "id = '$artilce_id' ";
+                $controller->db_update($table, $data, $where);
 
-                }
-
+            }
 
 
             $this->assign('arr', $arr);
@@ -171,22 +169,25 @@ class view  extends base
     }
 
 
-
-
     public function articleAjax()
     {
         $controller = Controller::getInstance();
-        if($controller->loginInfo()) {
-$user_id = $_SESSION['user_id'];
+
+        if ($controller->loginInfo()) {
+
+            $user_id = $_SESSION['user_id'];
+
             if (empty($_POST['cate_id']) || empty($_POST['title']) || empty($_POST['a_content'])) {
+
                 echo json_encode(['code' => 100]);
+
             } else {
 
-            $controller->db_insert('articles',['user_id'=>$user_id,'cate_id'=>$_POST['cate_id'],'name'=>$_POST['title'],'content'=>$_POST['a_content'],'created_at'=>date('Y-m-d H:i:s',time())]);
+             $a=    $controller->db_insert('articles', ['user_id' => $user_id, 'cate_id' => $_POST['cate_id'], 'name' => $_POST['title'], 'content' => $_POST['a_content'], 'created_at' => date('Y-m-d H:i:s', time())]);
 
-                echo json_encode(['code' => 200]);
+                echo json_encode(['code' => 200,'aa'=>$a]);
             }
-        }else{
+        } else {
             echo json_encode(['code' => 300]);
         }
     }
@@ -221,12 +222,6 @@ $user_id = $_SESSION['user_id'];
 
 
     }
-
-
-
-
-
-
 
 
 }
