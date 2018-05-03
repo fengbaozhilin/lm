@@ -297,7 +297,7 @@ class admin extends base
     public function loginCheck()
 
     {
-        $this->loginInfo();
+
 
         if(empty($_POST['username']) || empty($_POST['password']))
         {

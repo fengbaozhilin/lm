@@ -18,18 +18,18 @@
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner" role="listbox">
                                 <div class="item active">
-                                    <img src="https://img-blog.csdn.net/2018042819025023?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RRQ0ZLeVFEWFltM0Y4ckIw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="...">
+                                    <img src="/statics/index/img/lun1.jpg" alt="...">
                                     <div class="carousel-caption">
                                         <h3>“绝杀”中国AI，美国会打英伟达这张牌吗？</h3>
 
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img src="https://ss.csdn.net/p?http://mmbiz.qpic.cn/mmbiz_jpg/Pn4Sm0RsAuiakJ6aBoAf4Cqtlw9jCnJkVJeG1AeibicOt4TudWLcJGQFNrSOybicPnHfYIEKZoOAtUKvR5PC2zj0dw/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1" alt="...">
+                                    <img src="/statics/index/img/lun2.jpg" alt="...">
                                     <div class="carousel-caption"><h3>@程序员，与JavaScript 疲劳症SayBye！</h3></div>
                                 </div>
                                 <div class="item">
-                                    <img src="https://ss.csdn.net/p?http://mmbiz.qpic.cn/mmbiz_jpg/1hReHaqafacfexBlic7oWAwps52G0aic89QNmfiaCpDob8Pc5V4P3GkU7TNFmb2oUPIsmAuLPEVhx3k7AKvs1lnsQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1" alt="...">
+                                    <img src="/statics/index/img/lun3.jpg" alt="...">
                                     <div class="carousel-caption"><h3>Python爬虫爬取智联招聘（进阶版）</h3></div>
                                 </div>
 
@@ -64,7 +64,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-body">
 
-                                            <h4><a class="title" href="?m=view&f=detail&article_id=<?= ($arr['id']) ?>"><?= $arr['name'] ?>om</a>
+                                            <h4><a class="title" href="?m=view&f=detail&article_id=<?= ($arr['id']) ?>"><?= $arr['name'] ?></a>
                                             </h4>
                                             <p>
                                                 <a class="label label-default"><?= $arr['cate_name'] ?></a>

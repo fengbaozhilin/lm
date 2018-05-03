@@ -42,6 +42,7 @@
 
                             <li><a href="?m=view&f=myArticle"><?=  $_SESSION['username']  ?></a></li>
 
+                            <li><a href="?m=view&f=myArticle">我的文章</a></li>
                             <li><a href="?m=view&f=articlePut">发表文章</a></li>
                             <li><a href="?m=login&f=loginOut">注销</a></li>
                         </ul>
