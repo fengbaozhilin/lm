@@ -3,6 +3,10 @@ use controllers\controller;
 include ('controller.class.php');
 class login
 {
+
+    /**
+     * 登陆验证
+     */
     public function loginCheck(){
 
         $username = $_POST['username'] ;
@@ -45,7 +49,9 @@ class login
     }
 
 
-
+    /**
+     * 注册验证
+     */
     public function registerCheck(){
 
         if($_POST['username'] == ''|| $_POST['password'] == ''){
@@ -61,7 +67,7 @@ class login
             $controller = Controller::getInstance();
 
             $result = $controller->query($sql);
-
+//验证用户名是否存在
             $rows = mysqli_num_rows($result);
 
             if ($rows > 0) {
@@ -94,7 +100,9 @@ class login
     }
 
 
-
+    /**
+     * 注销登陆
+     */
     public function loginOut(){
 
         session_start();

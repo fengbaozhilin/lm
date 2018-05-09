@@ -7,7 +7,7 @@ include('base.class.php');
 class view extends base
 {
 
-
+//前台首页页面
     public function index()
     {
 
@@ -41,21 +41,21 @@ class view extends base
 
 
     }
-
+//前台登陆页面
     public function login()
     {
 
         $this->render('login');
 
     }
-
+//前台注册页面
     public function register()
     {
 
         $this->render('register');
 
     }
-
+//前台错误页面
     public function error_404()
     {
 
@@ -63,6 +63,7 @@ class view extends base
 
     }
 
+//前台分类页面
     public function cate()
     {
 
@@ -100,7 +101,7 @@ class view extends base
 
         }
     }
-
+//前台文章详情页面
     public function detail()
     {
 
@@ -153,7 +154,7 @@ class view extends base
 
     }
 
-
+//前台文章上传页面
     public function articlePut()
     {
         $controller = Controller::getInstance();
@@ -167,7 +168,7 @@ class view extends base
         $this->render('articlePut');
     }
 
-
+//前台文章上传
     public function articleAjax()
     {
         $controller = Controller::getInstance();
@@ -221,7 +222,7 @@ class view extends base
 
 
     }
-
+//前台文章回复
     public function detailReply()
     {
         $controller = Controller::getInstance();
@@ -250,7 +251,7 @@ class view extends base
         }
     }
 
-
+//前台搜索结果页面
     public function search()
     {
         if (isset($_POST['search'])) {
@@ -287,7 +288,7 @@ class view extends base
 
         }
     }
-
+//前台编辑用户密码页面
     public function editMy()
     {
         $controller = Controller::getInstance();
@@ -319,6 +320,8 @@ class view extends base
         }
     }
 
+
+    //前台编辑用户密码功能
     public function editUser()
 
     {

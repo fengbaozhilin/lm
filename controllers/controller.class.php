@@ -61,7 +61,11 @@ class controller
     }
 
 
-
+    /**删除数据
+     * @param $table
+     * @param $where
+     * @return array
+     */
     public function db_deleteone($table, $where){
         if(is_array($where)){
             foreach ($where as $key => $val) {
@@ -171,6 +175,10 @@ class controller
     }
 
 
+    /**执行数据库操作
+     * @param $sql
+     * @return array
+     */
     public function getArr($sql){
 
 
