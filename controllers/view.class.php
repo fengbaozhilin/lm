@@ -16,7 +16,7 @@ class view extends base
 
         //查询文章信息
 
-        $sql = "select articles.id,  articles.user_id,articles.cate_id , articles.name ,articles.content ,articles.hits,articles.created_at ,users.username,users.avatar,users.id AS user_id  ,categorys.name AS cate_name from   articles,users ,categorys WHERE articles.user_id = users.id AND  articles.cate_id =  categorys.id order BY created_at DESC limit 5";
+        $sql = "select articles.id,  articles.user_id,articles.cate_id , articles.name ,articles.content ,articles.hits,articles.created_at ,users.username,users.avatar,users.id AS user_id  ,categorys.name AS cate_name from   articles,users ,categorys WHERE articles.user_id = users.id AND  articles.cate_id =  categorys.id order BY created_at DESC limit 7";
 
 
         $arrs = $controller->getArr($sql);
