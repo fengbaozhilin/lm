@@ -17,7 +17,7 @@
 
 <div class="w_header">
     <div class="container">
-        <div class="w_header_top">
+        <div class="w_header_top" style="margin-left: -350px">
             <a href="#" class="w_logo"></a>
             <span class="w_header_nav">
 					<ul>
@@ -30,6 +30,11 @@
                                 <li <?php if(isset($_GET['filter']) && $_GET['filter'] == $cate['id']) { ?> style="background-color: #ff4b68" <?php } ?>><a href="?m=view&f=cate&filter=<?=$cate['id']?>"><?= $cate['name'] ?></a></li>
                             <?php } ?>
                         <?php } ?>
+
+                        <li style="margin-left: 50px">    <form style="margin-right: 10px" action="?m=view&f=search" method="post">
+                                    <input type="text" name="search">
+                                    <input type="submit" style="width: 50px" value="搜索">
+                                </form></li>
 					</ul>
 				</span>
             <div class="w_search" >
@@ -45,6 +50,7 @@
                             <li><a href="?m=view&f=myArticle">我的文章</a></li>
                             <li><a href="?m=view&f=articlePut">发表文章</a></li>
                             <li><a href="?m=login&f=loginOut">注销</a></li>
+
                         </ul>
                     </div>
 
@@ -55,14 +61,12 @@
                             <li><a href="?m=view&f=login">登入</a></li>
 
                             <li><a href="?m=view&f=register">注册</a></li>
+
                         </ul>
                     </div>
 
                 <?php } ?>
-                <form style="margin-right: 10px" action="?m=view&f=search" method="post">
-                    <input type="text" name="search">
-                    <input type="submit" style="width: 50px" value="搜索">
-                </form>
+
 
             </div>
         </div>
