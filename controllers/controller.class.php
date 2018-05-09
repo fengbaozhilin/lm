@@ -142,10 +142,6 @@ class controller
 
         $result = $controller->query($sql);
 
-        if (!$result) {
-            $a =  mysqli_error($this->conn);
-           return $a;
-        }
 
         $arrs= [];
 
