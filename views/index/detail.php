@@ -30,7 +30,47 @@
                     </div>
 
 
+                    <?php foreach ($comment_arrs as $comment_arr) { ?>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p class="box_c"><span class="d_time">评论人：<?= $comment_arr['username'] ?></span><span class="d_time"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;评论时间：<?= $comment_arr['created_at'] ?></span></p>
+                            <br>
+                            <ul class="infos">
+                                <?= $comment_arr['content'] ?>
+                            </ul>
+
+
+
+                        </div>
+                    </div>
+                    <?php } ?>
+
+                    <h3 style="color: red">发表评论</h3>
+                    <div class="reply-box form box-block">
+
+
+                        <form method="POST" action="?m=view&f=detailReply" accept-charset="UTF-8" id="reply-form">
+                            <input type="hidden" name="article_id" value="<?=$article_id?>">
+
+                            <div class="form-group">
+                                <textarea class="form-control" rows="5" placeholder="" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 164px;" id="reply_content" name="contents" cols="50"></textarea>
+                            </div>
+
+                            <div class="form-group reply-post-submit">
+                                <input class="btn btn-primary " id="reply-create-submit" type="submit" value="回复">
+
+                            </div>
+
+                            <div class="box preview markdown-reply" id="preview-box" style="display:none;"></div>
+
+                        </form>
+                    </div>
+
                 </div>
+
+
+
+
                 <div class="col-lg-3 col-md-3 w_main_right">
 
                     <div class="panel panel-default">

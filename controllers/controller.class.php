@@ -113,7 +113,7 @@ class controller
 
         $controller =  Controller::getInstance();
 
-        $result = $controller->query($sql);
+         $controller->query($sql);
 
         $id = mysqli_insert_id($this->conn);
 
@@ -141,6 +141,11 @@ class controller
         $controller =  Controller::getInstance();
 
         $result = $controller->query($sql);
+
+        if (!$result) {
+            $a =  mysqli_error($this->conn);
+           return $a;
+        }
 
         $arrs= [];
 

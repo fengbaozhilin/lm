@@ -72,13 +72,11 @@ class admin extends base
 
         $controller = Controller::getInstance();
 
-        $username = $_POST['username'];
-
         $password = $_POST['password'];
 
         $id = $_POST['id'];
 
-        $controller->db_update('users',['username'=>$username,'password'=>$password],"id = $id");
+        $controller->db_update('users',['password'=>$password],"id = $id");
 
         echo '<script>alert("更新成功");window.history.go(-1)</script>';
 
@@ -266,9 +264,9 @@ class admin extends base
 
             $id =$_POST['id'];
 
-            $controller->db_update('articles',['name'=>$_POST['name'],'content'=>$_POST['content']],"id=$id");
+            $a = $controller->db_update('articles',['name'=>$_POST['name'],'content'=>$_POST['content']],"id=$id");
 
-            echo json_encode(['code' => 200]);
+            echo json_encode(['code' => 200,'aa'=>$a]);
         }
 
 
